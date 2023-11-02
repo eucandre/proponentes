@@ -1,0 +1,28 @@
+/* app/assets/stylesheets/pagination.css */
+
+/* Estilize a lista de paginação */
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Estilize os itens da lista */
+  .pagination li {
+    margin: 0 5px;
+  }
+  
+  /* Estilize os links da página */
+  .pagination a {
+    text-decoration: none;
+    background-color: #337ab7;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+  
+  /* Estilize o link ativo (página atual) */
+  .pagination .active a {
+    background-color: #5bc0de;
+  }
+  

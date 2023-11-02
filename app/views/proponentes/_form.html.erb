@@ -1,0 +1,121 @@
+<%= form_with(model: @proponente, local: true) do |form| %>
+    <% if @proponente.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@proponente.errors.count, 'erro') %> impediram que este proponente fosse salvo:</h2>
+        <ul>
+          <% @proponente.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+ 
+    <div class="field">
+      <%= form.label :nome %>
+      <%= form.text_field :nome, class: "form-control" %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :cpf %>
+      <%= form.text_field :cpf, class: "form-control", id: "proponente_cpf" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :data_nascimento %>
+      <%= form.date_field :data_nascimento, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :logradouro %>
+      <%= form.text_field :logradouro, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :bairro %>
+      <%= form.text_field :bairro, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :cidade %>
+      <%= form.text_field :cidade, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :estado %>
+      <%= form.text_field :estado, class: "form-control" %>
+    </div>
+    
+    <div class="field">
+      <%= form.label :cep %>
+      <%= form.text_field :cep, class: "form-control", id: "proponente_cep" %>
+    </div>          
+    
+    <div class="field">
+      <%= form.label :telefone_pessoal %>
+      <%= form.text_field :telefone_pessoal, class: "form-control" %>
+    </div>        
+    <div class="field">
+      <%= form.label :salario %>
+      <%= form.number_field :salario, class: "form-control", min: 0 %>
+      
+      
+      <button id="calcular">Calcular</button>
+      <p id="resultado"></p>
+
+    </div>    
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        Inputmask("999.999.999-99").mask(document.getElementById("proponente_cpf"));
+        Inputmask("99999-999").mask(document.getElementById("proponente_cep"));
+      });
+    </script>
+    
+    <script>
+    const salarioInput = document.getElementById('proponente_salario');
+    const calcularButton = document.getElementById('calcular');
+    const resultadoElement = document.getElementById('resultado');
+
+    calcularButton.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      const salario = parseFloat(salarioInput.value);
+
+      if (isNaN(salario) || salario < 0) {
+        resultadoElement.textContent = 'Salário inválido';
+        return;
+      }
+
+      let total = 0;
+
+      if (salario <= 1045) {
+        total += salario * 0.075; // 7.5%
+      } else {
+        total += 1045 * 0.075;
+      }
+
+      if (salario > 1045 && salario <= 2089.60) {
+        total += (salario - 1045) * 0.09; // 9%
+      } else if (salario > 1045) {
+        total += (2089.60 - 1045) * 0.09;
+      }
+
+      if (salario > 2089.60 && salario <= 3134.40) {
+        total += (salario - 2089.60) * 0.12; // 12%
+      } else if (salario > 2089.60) {
+        total += (3134.40 - 2089.60) * 0.12;
+      }
+
+      if (salario > 3134.40) {
+        total += (salario - 3134.40) * 0.14; // 14%
+      }
+
+      resultadoElement.textContent = 'Total a recolher: ' + total.toFixed(2);
+      
+    });
+  </script>
+
+    <div class="actions py-3">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  

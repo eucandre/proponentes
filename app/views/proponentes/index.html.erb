@@ -1,0 +1,52 @@
+<div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">Proponentes</h5>
+        <%= form_tag proponentes_path, method: :get do %>
+          <%= label_tag :salario, 'Salário:' %>
+          <%= text_field_tag :salario, params[:salario] %>
+          <%= submit_tag 'Pesquisar' %>
+        <% end %>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="bg-light">
+                        <tr class="border-0">
+                            <th class="border-0">#</th>
+                            <th class="border-0">Nome</th>
+                            <th class="border-0">CPF</th>
+                            <th class="border-0">Telefone Pessoal</th>
+                            <th class="border-0">Salário</th>
+                            <th class="border-0">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% @proponentes.each do |proponente| %>
+                        <tr>
+                            <td><%= proponente.id %></td>
+                            <td><%= proponente.nome %></td>
+                            <td><%= proponente.cpf %> </td>
+                            <td><%= proponente.telefone_pessoal %></td>
+                            <td><%= proponente.salario %></td>
+                            <td><%= link_to 'Mostrar', proponente, class: 'btn btn-success' %>
+                            <%= link_to 'Editar', edit_proponente_path(proponente), class: 'btn btn-info' %>
+                            <%= link_to 'Excluir', proponente, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                </table>
+                <tr>
+                    <td colspan="9"><%= link_to 'Novo Proponente', new_proponente_path, class: 'btn btn-primary' %></td>
+                </tr>
+                <div class="pagination">
+                <%= will_paginate @items, renderer: WillPaginate::ActionView::LinkRenderer, class: 'pagination justify-content-center' %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+
+
+
+

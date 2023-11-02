@@ -1,0 +1,33 @@
+<div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">Proponentes</h5>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="bg-light">
+                        <tr class="border-0">
+                            <th class="border-0"></th>
+                            <th class="border-0">Nome <%= @proponente.nome %></th>
+                            <th class="border-0">CPF <%= @proponente.cpf %></th>
+                            <th class="border-0"><strong>Data de Nascimento: <%= @proponente.data_nascimento %></strong> 
+                            <th class="border-0"><strong>Logradouro:</strong> <%= @proponente.logradouro %></th>
+                            <th class="border-0"><strong>Bairro:</strong> <%= @proponente.bairro %></th>
+                            <th class="border-0"><strong>Cidade:</strong> <%= @proponente.cidade %></th>
+                            <th class="border-0"><strong>Estado:</strong> <%= @proponente.estado %></th>
+                            <th class="border-0"><strong>CEP:</strong> <%= @proponente.cep %></th>
+                            <th class="border-0"><strong>Telefone Pessoal:</strong> <%= @proponente.telefone_pessoal %></th>
+                            <th class="border-0"><strong>Telefone de Referência:</strong> <%= @proponente.telefone_referencia %></th>
+                            <th class="border-0"><strong>Salário:</strong> <%= number_to_currency(@proponente.salario) %></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+
+
+
+
