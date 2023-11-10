@@ -6,19 +6,12 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-
+  * Ruby version - 3.2.2
+    Rails version - 7.1.1
 * System dependencies
-
+  * PostgreSQL 12.16
+  * nodejs - 10.19.0
 * Configuration
-
-* Database creation
-
-* Database initialization
-
+  * docker-compose --build
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  * rails test
